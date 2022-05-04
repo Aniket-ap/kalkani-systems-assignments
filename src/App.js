@@ -1,5 +1,6 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
+import AllSearchData from "./components/AllSearchData";
+import SearchBar from "./components/SearchBar";
 import { getDomains } from "./services";
 
 const App = () => {
@@ -10,36 +11,22 @@ const App = () => {
 
   const onSearch = (e) => {
     e.preventDefault();
-
-    fetch(`https://api.domainsdb.info/v1/domains/search?domain=facebook`)
-    .then(res => {
-      console.log(res)
-      return res.json()
-    })
-    .then(data => {
-      setData(data)
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
-
-    // getDomains()
-    //   .then((data) => setData(data))
-    //   .catch((error) => {
-    //     setError(true);
-    //     throw error;
-    //   })
-    //   .finally(() => setLoading(false));
-    // console.log(data);
+    console.log(value)
+    getDomains()
+      .then((data) => setData(data))
+      .catch((error) => {
+        setError(true);
+        throw error;
+      })
+      .finally(() => setLoading(false));
+    console.log(data);
   };
   return (
     <div>
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <button onClick={onSearch}>Search</button>
+      <SearchBar value={value} setValue={setValue} onSearch={onSearch} />
+      <div>
+        <AllSearchData/>
+      </div>
     </div>
   );
 };
