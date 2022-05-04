@@ -32,9 +32,14 @@
   font-weight: 700;
 }
 
+.ip-add{
+  display: flex;
+}
+
 .ip-add span {
   background-color: lightgreen;
-  padding: 4px;
+  padding: 5px;
+  border-radius: 3px;
 }
 
 .redirect {
@@ -85,5 +90,10 @@
   }
   .information-date {
     font-size: 10px;
+  }
+  .ip-add{
+    display: flex;
+    flex-direction: column;
+    width: 130px;
   }
 }

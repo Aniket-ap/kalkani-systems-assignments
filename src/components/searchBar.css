@@ -3,12 +3,15 @@
   overflow: auto;
   border-radius: 5px;
   width: 400px;
-  margin: 0 auto;
+}
+
+.search-form{
+  display: flex;
 }
 
 .search input[type="text"] {
   border: 0px;
-  width: 67%;
+  width: 100%;
   padding: 10px 10px;
 }
 

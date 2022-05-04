@@ -7,7 +7,7 @@ const AllSearchData = () => {
   return (
     <div className='container'>
         {
-          data.map((data, index) => (
+          data.slice(0,10).map((data, index) => (
             <div key={index.toString()}>
               <Card details={data} />
             </div>

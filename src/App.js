@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import AllSearchData from "./components/AllSearchData";
 import SearchBar from "./components/SearchBar";
 import { getDomains } from "./services";
+import "./App.css"
 
 const App = () => {
   const [value, setValue] = useState("");
@@ -11,7 +12,7 @@ const App = () => {
 
   const onSearch = (e) => {
     e.preventDefault();
-    console.log(value)
+    console.log(value);
     getDomains()
       .then((data) => setData(data))
       .catch((error) => {
@@ -23,10 +24,12 @@ const App = () => {
   };
   return (
     <div>
-      <SearchBar value={value} setValue={setValue} onSearch={onSearch} />
-      <div>
-        <AllSearchData/>
-      </div>
+      <header className="main-header">
+        <SearchBar value={value} setValue={setValue} onSearch={onSearch} />
+      </header>
+      <section className="main-section">
+        <AllSearchData />
+      </section>
     </div>
   );
 };
