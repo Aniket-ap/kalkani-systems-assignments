@@ -1,11 +1,16 @@
-const API_URL = `https://api.domainsdb.info/v1/domains/search?domain=facebook`;
+// const API_URL = `https://cors-anywhere.herokuapp.com/https://api.domainsdb.info/v1/domains/search?domain=facebook`;
 
-export async function getDomains() {
+export async function getDomains(requiredDomain) {
   try {
-    const response = await fetch(`${API_URL}`);
-    const data = await response.text();
-    console.log("data", data)
-    return data;
+    await fetch(
+      `https://cors-anywhere.herokuapp.com/https://api.domainsdb.info/v1/domains/search?domain=${requiredDomain}}`
+     )
+      .then((response) => {
+       return response.json();
+      })
+      .then((data) => {
+        console.log(data)
+      });
   } catch (error) {
     console.error(error);
   }

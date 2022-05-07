@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import AllSearchData from "./components/AllSearchData";
 import SearchBar from "./components/SearchBar";
 import { getDomains } from "./services";
-import "./App.css"
+import "./App.css";
+import axios from "axios";
 
 const App = () => {
   const [value, setValue] = useState("");
@@ -12,15 +13,21 @@ const App = () => {
 
   const onSearch = (e) => {
     e.preventDefault();
-    console.log(value);
-    getDomains()
-      .then((data) => setData(data))
-      .catch((error) => {
-        setError(true);
-        throw error;
-      })
-      .finally(() => setLoading(false));
-    console.log(data);
+
+    if(value === "") {
+      alert("should not be empty")
+      return;
+    }
+
+    getDomains(value)
+    // getDomains()
+    //   .then((data) => setData(data))
+    //   .catch((error) => {
+    //     setError(true);
+    //     throw error;
+    //   })
+    //   .finally(() => setLoading(false));
+    // console.log(data);
   };
   return (
     <div>
